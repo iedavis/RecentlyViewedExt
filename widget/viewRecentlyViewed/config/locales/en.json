@@ -1,0 +1,6 @@
+{
+  "resources" : {
+    "numDisplayedLabel": "Number to Display",
+    "numDisplayedHelpText": "Number of products to display"
+  }
+}

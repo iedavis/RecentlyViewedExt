@@ -1,0 +1,12 @@
+{
+    "widgetDescriptorName": "Recently Viewed (Tracker)",
+    "properties": [
+        {
+            "id": "lifespan",
+            "type": "stringType",
+            "name": "lifespan",
+            "labelResourceId": "lifespanLabel",
+            "helpTextResourceId": "lifespanHelpText"
+        }
+    ]
+}

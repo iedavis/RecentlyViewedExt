@@ -1,0 +1,12 @@
+{
+    "widgetDescriptorName": "Recently Viewed",
+    "properties": [
+        {
+            "id": "numDisplayed",
+            "type": "stringType",
+            "name": "numDisplayed",
+            "labelResourceId": "numDisplayedLabel",
+            "helpTextResourceId": "numDisplayedHelpText"
+        }
+    ]
+}

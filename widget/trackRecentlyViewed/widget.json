@@ -1,0 +1,12 @@
+{
+  "name": "Recently Viewed Products (Tracker)",
+  "availableToAllPages": true,
+  "javascript": "trackRecentlyViewed",
+  "imports": ["product"],
+  "global": true,
+  "globalEnabled": true,
+  "jsEditable": true,
+  "config": {
+  	"lifespan": "21"
+  }
+}

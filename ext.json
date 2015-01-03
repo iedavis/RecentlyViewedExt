@@ -1,0 +1,9 @@
+{
+  "extensionID": "fa522325-d0ca-4d20-9e45-59db7e838ab9",
+  "developerID": "999999",
+  "createdBy": "Ian Davis",
+  "name": "Recently Viewed",
+  "description": "Record and display recently viewed products",
+  "version" :1,
+  "timeCreated": "2014-12-08"
+}

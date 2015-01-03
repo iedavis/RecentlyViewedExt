@@ -1,0 +1,9 @@
+<div class="text-center">
+    <h4 data-bind="widgetLocaleText : 'title' "></h4>
+	<!-- ko foreach: { data: recentProducts, as: 'product' } -->
+    <a data-bind="attr: {href: '#!' + product.route}" >
+        <img class="img-responsive center-block" data-bind="imageSource: {src: product.primaryThumbImageURL, alt:product.displayName, errorSrc:'/img/no-image.jpg'}"></img>
+    </a>
+    <small data-bind="text: product.displayName"></small>
+	<!-- /ko -->
+</div>

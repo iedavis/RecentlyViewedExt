@@ -1,0 +1,11 @@
+{
+  "name": "Recently Viewed Products",
+  "javascript": "viewRecentlyViewed",
+  "availableToAllPages": true,
+  "imports": ["product"],
+  "i18nresources": "viewRecentlyViewed",
+  "jsEditable": true,
+  "config": {
+  	"numDisplayed": "3"
+  }
+}

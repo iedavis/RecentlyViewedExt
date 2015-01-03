@@ -1,0 +1,6 @@
+{
+  "resources" : {
+    "lifespanLabel": "Lifespan",
+    "lifespanHelpText": "No. of days before history is stale."
+  }
+}
