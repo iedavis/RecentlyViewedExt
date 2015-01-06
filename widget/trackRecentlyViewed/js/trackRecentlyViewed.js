@@ -27,9 +27,9 @@ define(
         // Validate products in localStorage
         var recentlyViewedArray = JSON.parse(localStorage.getItem("cc.product.recentlyViewed")) || [];
 
-        var thresholdMarker;
         var cutoffDate = Number(widgetModel.lifespan()).days().ago();
 
+        var thresholdMarker = recentlyViewedArray.length;
         for(var i = 0; i < recentlyViewedArray.length; i++){
           var viewedDate = Date.parse(recentlyViewedArray[i].dateViewed);
           if(viewedDate.compareTo(cutoffDate) === -1){
