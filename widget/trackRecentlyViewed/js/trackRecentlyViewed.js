@@ -29,7 +29,7 @@ define(
 
       trackProductViewed: function(product) {
 
-        var viewHistoryLength = 24;
+        var viewHistoryLength = 12;
         var today = Date.today();
 
         // Retrieve array from localStorage (or create an empty array if not in localStorage)
