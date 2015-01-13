@@ -11,18 +11,34 @@ define(
   //-------------------------------------------------------------------
   // DEPENDENCIES
   //-------------------------------------------------------------------
-  ['knockout', 'pubsub', 'ccRestClient', 'js/date'],
+  ['knockout', 'pubsub', 'ccRestClient', 'moment'],
   
   //-------------------------------------------------------------------
   // MODULE DEFINITION
   //-------------------------------------------------------------------
-  function(ko, pubsub, ccRestClient) {
+  function(ko, pubsub, ccRestClient, moment) {
 
     "use strict";
+
+    var widget;
 
     return{
 
       onLoad: function(widgetModel) {
+        widget = widgetModel;
+
+        var recentlyViewedCookie = JSON.parse(localStorage.getItem("cc.product.recentlyViewed")) || [];
+
+        // Remove stale Products
+        var cutOffDate = moment().subtract(Number(widget.lifespan()), 'days');
+        for(var i = 0; i < recentlyViewedCookie.length; i++){
+            if(moment(recentlyViewedCookie[i].viewedDate).isBefore(cutOffDate)){
+                recentlyViewedCookie.length = i;
+                break;
+            }
+        }
+
+        localStorage["cc.product.recentlyViewed"] = JSON.stringify(recentlyViewedCookie);
 
         $.Topic(pubsub.topicNames.PRODUCT_VIEWED).subscribe(this.trackProductViewed);
       },
@@ -30,7 +46,6 @@ define(
       trackProductViewed: function(product) {
 
         var viewHistoryLength = 12;
-        var today = Date.today();
 
         // Retrieve array from localStorage (or create an empty array if not in localStorage)
         var recentlyViewedCookie = JSON.parse(localStorage.getItem("cc.product.recentlyViewed")) || [];
@@ -38,14 +53,14 @@ define(
         // See if the viewed product is already in the array, and remove it
         var foundIndex = -1;
         for(var i = 0; i < recentlyViewedCookie.length; i++){
-          if(recentlyViewedCookie[i].id == product.id) foundIndex = i;
+          if(recentlyViewedCookie[i].id == product.id) {foundIndex = i; break;}
         }
         if (foundIndex > -1) recentlyViewedCookie.splice(foundIndex, 1);
 
         // Insert viewed product at top of array
         recentlyViewedCookie.unshift({
           "id": product.id,
-          "dateViewed": today.getFullYear() + " " + (today.getMonth() + 1) + " " + today.getDate(),
+          "viewedDate": moment().format('DDMMMYY'),
         });
 
         // Trim the array to the maximum length (+1 to cater for Product Details Page)

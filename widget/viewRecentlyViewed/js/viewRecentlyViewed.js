@@ -12,12 +12,12 @@ define(
   //-------------------------------------------------------------------
   // DEPENDENCIES
   //-------------------------------------------------------------------
-  ['knockout', 'pubsub', 'ccRestClient'],
+  ['knockout', 'pubsub', 'ccRestClient', 'moment'],
 
   //-------------------------------------------------------------------
   // MODULE DEFINITION
   //-------------------------------------------------------------------
-  function(ko, pubsub, ccRestClient) {
+  function(ko, pubsub, ccRestClient, moment) {
 
     "use strict";
 
@@ -31,18 +31,6 @@ define(
         widget.recentProductsAll = [];
 
         var recentlyViewedCookie = JSON.parse(localStorage.getItem("cc.product.recentlyViewed")) || [];
-
-//        var cutoffDate = Number(widgetModel.lifespan()).days().ago();
-//        var thresholdMarker = recentlyViewedArray.length;
-//        for(var i = 0; i < recentlyViewedArray.length; i++){
-//          var viewedDate = Date.parse(recentlyViewedArray[i].dateViewed);
-//          if(viewedDate.compareTo(cutoffDate) === -1){
-//              thresholdMarker = i;
-//              break;
-//          }
-//        }
-//        recentlyViewedArray.length = thresholdMarker;
-
 
         // Refresh the Recently Viewed Data
         if(recentlyViewedCookie.length > 0){
